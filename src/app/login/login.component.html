@@ -1,35 +1,39 @@
-<div id="top" class="bg-slate-700 flex flex-col">
-    <div id="logo" class="self-center mt-5 flex flex-col justify-items-center">
-        <img class="w-32 object-contain text-center" src="https://cdn.discordapp.com/attachments/981402983654899762/1013277644206374984/qr2.png" alt="logo-duoc-v2">
-        <h1 class="text-3xl font-bold text-white mt-1"><span class="text-yellow-500">Registr</span>APP</h1>
+<section id="top">
+    <div id="logo">
+        <img src="https://cdn.discordapp.com/attachments/981402983654899762/1013277644206374984/qr2.png"
+            alt="logo-duoc-v2">
+        <h1><span>Registr</span>APP</h1>
     </div>
-    <p class="text-white text-sm italic text-center mt-2">"Una nueva forma de estar <span class="text-yellow-500">presente</span>."</p>
+    <p class="phrase">"Una nueva forma de estar <span>presente</span>."</p>
 
-    <section id="login-container" class="absolute top-1/3 bg-white self-center w-96 shadow-md rounded-md">
+    <div id="login-container">
         <header>
-            <h1 class="text-center text-xl font-bold mt-3">Bienvenido profesor</h1>
+            <h1>Bienvenido profesor</h1>
         </header>
-    
-        <form action="" class="px-10 mt-5">
-            <label for="email-input">Correo:</label>
-            <br>
-            <input type="text" id="email-input">
-            
-            <br>
-            
-            <label for="password-input">Contraseña:</label>
-            <br>
-            <input type="password" id="password-input">
+
+        <form action="">
+            <mat-form-field id="form-input" appearance="standard">
+                <mat-label>Correo</mat-label>
+                <input matInput placeholder="usuario@profesor.duoc.cl" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">{{getErrorEmailMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="form-input" appearance="standard">
+                <mat-label>Contraseña</mat-label>
+                <input [formControl]="password" type="password" matInput>
+                <mat-error *ngIf="password.invalid">{{getErrorPasswordMessage()}}</mat-error>
+            </mat-form-field>
+
+            <button type="submit" mat-stroked-button color="primary">Iniciar Sesión</button>
+
         </form>
-    
-    </section>
-    
+
+    </div>
+
+</section>
+
+
+
+
+<div id="bottom">
 </div>
-<div id="bottom" class="bg-slate-200"></div>
-
-
-
-
-
-
-
