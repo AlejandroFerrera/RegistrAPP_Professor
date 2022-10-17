@@ -1,0 +1,35 @@
+<header>
+    <nav>
+        <div id="navbar-brand">
+            <img src="https://www.duoc.cl/wp-content/themes/wordpress-duoc-cl/images/logo-duoc.svg" alt="logo-duoc">
+        </div>
+
+        <div id="navbar-info">
+            <div id="professor-data">
+                <p>Docente: <span>DIEGO CARES GONZALES</span></p>
+                <p>{{dateTime | date:'medium'}}</p>
+            </div>
+            <a href="">
+                <mat-icon id="logout-icon">logout</mat-icon>
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main class="sections-cards-container">
+
+    <h1>Secciones:</h1>
+
+    <div class="section-card" *ngFor="let section of sections">
+
+        <mat-card class="component">
+            <div class="info">
+                <mat-card-title>{{section.title + "_" + section.section }}</mat-card-title>
+                <mat-card-subtitle>{{ section.cod + ", Sala AV-T505" }}</mat-card-subtitle>
+            </div>
+
+            <button class="register-btn" mat-flat-button color="accent">Registrar asistencia +</button>
+
+        </mat-card>
+    </div>
+</main>
