@@ -1,0 +1,80 @@
+/* HEADER */
+
+p {
+  margin: 0;
+}
+
+nav {
+  height: 70px;
+  background-color: #34495e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#navbar-brand img {
+  height: 50px;
+  object-fit: contain;
+  padding-bottom: 5px;
+  margin-left: 10px;
+}
+
+#navbar-info {
+  display: flex;
+  align-items: center;
+}
+
+#professor-data p {
+  color: white;
+}
+
+#professor-data p:nth-child(2) {
+  text-align: end;
+}
+
+#logout-icon {
+  color: white;
+  font-size: 30px;
+  padding: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+/* END OF HEADER */
+
+/* SECTIONS CONTAINER */
+
+.sections-cards-container {
+  width: 60%;
+  margin: auto;
+}
+
+.sections-cards-container h1 {
+  font-size: 30px;
+  margin-top: 15px;
+  font-weight: 500;
+  margin-left: 1px;
+}
+
+.section-card {
+  margin: 10px 0;
+}
+
+.component {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eff6fe;
+}
+
+.mat-card-title {
+  margin-top: 20px;
+}
+
+.register-btn {
+  height: 90%;
+}
+
+body {
+  background-color: red;
+}

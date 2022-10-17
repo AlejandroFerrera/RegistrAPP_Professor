@@ -12,9 +12,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { SectionsComponent } from './sections/sections.component';
+import { SectionsCardsComponent } from './sections-cards/sections-cards.component';
+import { SectionAssistenceComponent } from './section-assistence/section-assistence.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SectionsComponent],
+  declarations: [AppComponent, LoginComponent, SectionsComponent, SectionsCardsComponent, SectionAssistenceComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

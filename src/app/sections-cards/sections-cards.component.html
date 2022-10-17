@@ -1,0 +1,17 @@
+<main class="sections-cards-container">
+
+    <h1>Secciones:</h1>
+
+    <div class="section-card" *ngFor="let section of sections">
+
+        <mat-card class="component">
+            <div class="info">
+                <mat-card-title>{{section.title + "_" + section.section }}</mat-card-title>
+                <mat-card-subtitle>{{ section.cod + ", Sala AV-T505" }}</mat-card-subtitle>
+            </div>
+
+            <button class="register-btn" mat-flat-button color="accent">Registrar asistencia +</button>
+
+        </mat-card>
+    </div>
+</main>
