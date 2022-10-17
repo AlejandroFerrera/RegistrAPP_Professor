@@ -64,6 +64,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #eff6fe;
 }
 
 .mat-card-title {
@@ -72,4 +73,8 @@ nav {
 
 .register-btn {
   height: 90%;
+}
+
+body {
+  background-color: red;
 }

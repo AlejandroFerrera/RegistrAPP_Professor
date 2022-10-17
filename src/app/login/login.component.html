@@ -13,13 +13,15 @@
 
         <form action="">
             <mat-form-field id="form-input" appearance="standard">
-                <mat-label>Correo</mat-label>
+                <mat-label >Correo</mat-label>
+                <mat-icon class="at-icon">alternate_email</mat-icon>
                 <input matInput placeholder="usuario@profesor.duoc.cl" [formControl]="email" required>
                 <mat-error *ngIf="email.invalid">{{getErrorEmailMessage()}}</mat-error>
             </mat-form-field>
 
             <mat-form-field id="form-input" appearance="standard">
                 <mat-label>Contraseña</mat-label>
+                <mat-icon class="lock-icon">lock</mat-icon>
                 <input [formControl]="password" type="password" matInput>
                 <mat-error *ngIf="password.invalid">{{getErrorPasswordMessage()}}</mat-error>
             </mat-form-field>
