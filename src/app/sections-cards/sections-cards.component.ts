@@ -14,7 +14,7 @@ export class SectionsCardsComponent implements OnInit {
 
   sections: any[] = []
 
-  constructor(private sectionService: SectionsService) {}
+  constructor(private sectionService: SectionsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
 

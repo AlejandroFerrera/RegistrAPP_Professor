@@ -1,0 +1,43 @@
+.students-table, .section-table {
+  width: 75%;
+  margin: 50px auto;
+}
+
+.section-table {
+    margin-top: 10px;
+}
+
+th {
+  background: #34495e;
+  color: white;
+}
+
+td {
+    background: #f6faff;
+}
+
+h1{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.save-btn, .exit-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin: -10px 10px 20px;
+}
+
+.mat-icon, p {
+    display: inline;
+    margin: 0 5px 0 0;
+}
+
+.assistence-actions {
+    width: 25%;
+    margin: auto;
+    display: flex;
+}

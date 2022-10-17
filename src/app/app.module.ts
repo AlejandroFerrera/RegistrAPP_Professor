@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,9 +13,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { SectionsComponent } from './sections/sections.component';
 import { SectionsCardsComponent } from './sections-cards/sections-cards.component';
 import { SectionAssistenceComponent } from './section-assistence/section-assistence.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SectionsComponent, SectionsCardsComponent, SectionAssistenceComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    SectionsComponent,
+    SectionsCardsComponent,
+    SectionAssistenceComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,6 +37,9 @@ import { SectionAssistenceComponent } from './section-assistence/section-assiste
     MatButtonModule,
     MatIconModule,
     MatCardModule,
+    HttpClientModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent],
