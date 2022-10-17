@@ -10,7 +10,7 @@
                 <mat-card-subtitle>{{ section.cod + ", Sala AV-T505" }}</mat-card-subtitle>
             </div>
 
-            <button class="register-btn" mat-flat-button color="accent">Registrar asistencia +</button>
+            <button [routerLink]="['/sections', (section.cod + section.section)]" class="register-btn" mat-flat-button color="accent">Registrar asistencia +</button>
 
         </mat-card>
     </div>
