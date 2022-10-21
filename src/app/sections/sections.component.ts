@@ -9,13 +9,10 @@ import { timer } from 'rxjs';
 })
 export class SectionsComponent implements OnInit {
   dateTime: Date = new Date();
-  sections: any[] = []
 
   constructor(private sectionService: SectionsService) {}
 
   ngOnInit(): void {
-
-    this.sections = this.sectionService.getSections();
 
     timer(0, 1000).subscribe(() => {
       this.dateTime = new Date();

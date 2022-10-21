@@ -15,7 +15,7 @@ import { SectionsCardsComponent } from './sections-cards/sections-cards.componen
 import { SectionAssistenceComponent } from './section-assistence/section-assistence.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
-import {MatSortModule} from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatCardModule,
     HttpClientModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

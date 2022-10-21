@@ -1,17 +1,24 @@
-<main class="sections-cards-container">
+<div *ngIf="!sections; else content">
+    <h3 class="loading">Cargando secciones del profesor...</h3>
+</div>
 
-    <h1>Secciones:</h1>
+<ng-template #content>
+    <main class="sections-cards-container">
 
-    <div class="section-card" *ngFor="let section of sections">
+        <h1>Secciones:</h1>
+    
+        <div class="section-card" *ngFor="let section of sections">
+    
+            <mat-card class="component">
+                <div class="info">
+                    <mat-card-title>{{section.nombre_asignatura + "_" + section.nombre_seccion }}</mat-card-title>
+                    <mat-card-subtitle>{{ section.cod_asignatura + ", Sala AV-T505" }}</mat-card-subtitle>
+                </div>
+    
+                <button [routerLink]="['/sections', (section.cod_asignatura + section.nombre_seccion)]" class="register-btn" mat-flat-button
+                    color="accent">Registrar asistencia +</button>
+            </mat-card>
+        </div>
+    </main>
+</ng-template>
 
-        <mat-card class="component">
-            <div class="info">
-                <mat-card-title>{{section.title + "_" + section.section }}</mat-card-title>
-                <mat-card-subtitle>{{ section.cod + ", Sala AV-T505" }}</mat-card-subtitle>
-            </div>
-
-            <button [routerLink]="['/sections', (section.cod + section.section)]" class="register-btn" mat-flat-button color="accent">Registrar asistencia +</button>
-
-        </mat-card>
-    </div>
-</main>
