@@ -26,9 +26,15 @@
                 <mat-error *ngIf="password.invalid">{{getErrorPasswordMessage()}}</mat-error>
             </mat-form-field>
 
-            <button type="submit" mat-stroked-button color="primary">Iniciar Sesión</button>
-
+            <button type="submit" mat-stroked-button color="primary" (click)="login()">Iniciar Sesión</button>
+        
         </form>
+
+        <footer>
+            <div *ngIf="error">
+                <p class="error">{{ error }}</p>
+            </div>
+        </footer>
 
     </div>
 

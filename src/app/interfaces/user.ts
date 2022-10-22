@@ -1,7 +1,7 @@
 export interface User {
     token: string,
     idProfesor: number,
-    nombre: string,
+    nombre : string,
     apellido: string,
     tipo: string,
 }

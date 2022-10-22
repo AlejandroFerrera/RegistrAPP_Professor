@@ -6,7 +6,7 @@
 
         <div id="navbar-info">
             <div id="professor-data">
-                <p>Docente: <span>DIEGO CARES GONZALES</span></p>
+                <p>Docente: <span>{{(nombreProfesor | uppercase) + " " + (apellidoProfesor | uppercase)}}</span></p>
                 <p>{{dateTime | date:'medium'}}</p>
             </div>
             <a href="">

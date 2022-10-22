@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { SectionAssistenceComponent } from './section-assistence/section-assistence.component';
 import { SectionsCardsComponent } from './sections-cards/sections-cards.component';
 import { SectionsComponent } from './sections/sections.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -15,11 +16,12 @@ const routes: Routes = [
       {
         path: '',
         component: SectionsCardsComponent,
+        canActivate: [AuthGuardService],
       },
       {
         path: ':section_id',
-        component: SectionAssistenceComponent
-      }
+        component: SectionAssistenceComponent,
+      },
     ],
   },
 ];

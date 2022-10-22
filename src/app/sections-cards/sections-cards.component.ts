@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SectionsService } from '../services/sections.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,6 +11,7 @@ import { Section } from '../interfaces/sections';
   styleUrls: ['./sections-cards.component.css'],
 })
 export class SectionsCardsComponent implements OnInit {
+
   sections: Section[] = [];
 
   constructor(
@@ -19,20 +20,13 @@ export class SectionsCardsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.sectionService.getSections().subscribe((sections) => {
-      sections.forEach((section) => {
-        
-        const newSection: Section = {
-          id_seccion: section['id seccion'],
-          nombre_seccion: section['nombre seccion'],
-          cod_asignatura: section['codigo asignatura'],
-          nombre_asignatura: section['nombre asignatura'],
-          id_profesor: section['id_profesor'],
-          nombre_profesor: section['nombre profesor'],
-        };
+    
+    const idProfesor = localStorage.getItem('idProfesor');
 
-        this.sections.push(newSection);
+    if (idProfesor) {
+      this.sectionService.getSections(idProfesor).subscribe((sections) => {
+        this.sections = sections;
       });
-    });
+    }
   }
 }

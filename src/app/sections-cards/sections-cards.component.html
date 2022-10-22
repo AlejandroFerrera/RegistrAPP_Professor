@@ -11,11 +11,11 @@
     
             <mat-card class="component">
                 <div class="info">
-                    <mat-card-title>{{section.nombre_asignatura + "_" + section.nombre_seccion }}</mat-card-title>
-                    <mat-card-subtitle>{{ section.cod_asignatura + ", Sala AV-T505" }}</mat-card-subtitle>
+                    <mat-card-title>{{section.nombreAsignatura + "_" + section.nombreSeccion }}</mat-card-title>
+                    <mat-card-subtitle>{{ section.codigoAsignatura + ", Sala AV-T505" }}</mat-card-subtitle>
                 </div>
     
-                <button [routerLink]="['/sections', (section.cod_asignatura + section.nombre_seccion)]" class="register-btn" mat-flat-button
+                <button [routerLink]="['/sections', (section.codigoAsignatura+ section.nombreSeccion)]" class="register-btn" mat-flat-button
                     color="accent">Registrar asistencia +</button>
             </mat-card>
         </div>

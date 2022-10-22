@@ -16,6 +16,8 @@ import { SectionAssistenceComponent } from './section-assistence/section-assiste
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     MatSortModule,
   ],
-  providers: [],
+  providers: [AuthGuardService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

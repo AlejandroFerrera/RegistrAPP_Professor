@@ -7,11 +7,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SectionsService {
-  sectionsURL = 'https://registrapp.onrender.com/api/seccion/?asignatura__profesores__id=4';
+  sectionsURL =
+    'https://registrapp.onrender.com/api/seccion/?asignatura__profesores__id=';
 
   constructor(private http: HttpClient) {}
 
-  getSections(): Observable<any[]> {
-    return this.http.get<any[]>(this.sectionsURL);
+  getSections(idProfesor: string): Observable<Section[]> {
+    return this.http.get<Section[]>(this.sectionsURL + idProfesor);
   }
 }

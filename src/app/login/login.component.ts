@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +15,8 @@ export class LoginComponent implements OnInit {
     Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
   ]);
   password = new FormControl('', [Validators.required]);
+
+  error: string = '';
 
   getErrorEmailMessage() {
     if (this.email.hasError('required')) {
@@ -28,7 +33,30 @@ export class LoginComponent implements OnInit {
     return '';
   }
 
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  login() {
+    const email = this.email.value!;
+    const password = this.password.value!;
+
+    this.authService.login(email, password).subscribe((response) => {
+      if (this.authService.isLogedIn()) {
+        
+        const navigationExtras: NavigationExtras = {
+          state: {
+            idProfesor: response.idProfesor,
+            nombre: response.nombre,
+            apellido: response.apellido,
+          },
+        };
+
+        this.router.navigate(['sections'], navigationExtras);
+      } else {
+        this.authService.logout();
+        this.error = 'Nombre de usuario o contraseña incorrectos';
+      }
+    });
+  }
 }
