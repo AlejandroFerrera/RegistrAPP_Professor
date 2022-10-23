@@ -11,24 +11,27 @@ import { Router } from '@angular/router';
 })
 export class SectionsComponent implements OnInit {
   dateTime: Date = new Date();
-  state: any;
+  state?: any;
 
   nombreProfesor?: string;
   apellidoProfesor?: string;
 
-  constructor(private sectionService: SectionsService, private router: Router) {
+  constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
+    console.log(navigation)
     this.state = navigation?.extras.state as {
       idProfesor: string;
       nombre: string;
       apellido: string;
     };
 
-    this.nombreProfesor = this.state.nombre;
-    this.apellidoProfesor = this.state.apellido;
+    console.log(this.state)
+
   }
 
   ngOnInit(): void {
+    this.nombreProfesor = this.state.nombre;
+    this.apellidoProfesor = this.state.apellido;
 
     timer(0, 1000).subscribe(() => {
       this.dateTime = new Date();

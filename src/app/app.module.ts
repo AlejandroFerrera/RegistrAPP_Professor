@@ -18,6 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AuthGuardService } from './services/auth-guard.service';
     HttpClientModule,
     MatTableModule,
     MatSortModule,
+    MatRadioModule
   ],
   providers: [AuthGuardService, AuthService],
   bootstrap: [AppComponent],

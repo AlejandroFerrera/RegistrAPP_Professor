@@ -24,9 +24,10 @@ export class SectionsCardsComponent implements OnInit {
     const idProfesor = localStorage.getItem('idProfesor');
 
     if (idProfesor) {
-      this.sectionService.getSections(idProfesor).subscribe((sections) => {
+      this.sectionService.getProfessorSections(idProfesor).subscribe((sections) => {
         this.sections = sections;
       });
     }
   }
+
 }

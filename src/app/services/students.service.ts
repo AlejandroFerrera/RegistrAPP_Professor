@@ -8,13 +8,13 @@ import { catchError, retry } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class GetusersService {
+export class StudentsService {
 
-  apiUrl ='https://dummyjson.com/users?limit=10'
+  apiUrl ='https://registrapp.onrender.com/api/matricula/?seccion__id_seccion='
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  getSectionTuition(sectionId: string): Observable<any> {
+    return this.http.get<any>(this.apiUrl + sectionId);
   }
 }

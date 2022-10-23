@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../interfaces/user';
 import { tap } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private loginUrl: string = 'https://registrapp.onrender.com/api/login';
-  private loginSuccess: boolean = false;
+  private loginSuccess: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) {}
 
@@ -17,12 +18,11 @@ export class AuthService {
       const token = context.token;
       const idProfesor = context.idProfesor;
 
-
       localStorage.setItem('token', token);
       localStorage.setItem('idProfesor', idProfesor.toString());
-      this.loginSuccess = true;
+      this.loginSuccess.next(true);
     } catch (error) {
-      this.loginSuccess = false;
+      this.loginSuccess.next(false);
     }
   }
 
@@ -37,11 +37,12 @@ export class AuthService {
   }
 
   isLogedIn() {
-    return this.loginSuccess;
+    return this.loginSuccess.value;
   }
 
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('idProfesor');
+    this.loginSuccess.next(false);
   }
 }
