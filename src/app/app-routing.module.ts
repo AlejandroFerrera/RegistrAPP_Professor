@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { E404Component } from './e404/e404.component';
 import { LoginComponent } from './login/login.component';
 import { SectionAssistenceComponent } from './section-assistence/section-assistence.component';
 import { SectionsCardsComponent } from './sections-cards/sections-cards.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
       },
     ],
   },
+  {path: '**', component: E404Component}
 ];
 
 @NgModule({

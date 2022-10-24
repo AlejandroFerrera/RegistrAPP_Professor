@@ -21,6 +21,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { QRCodeModule } from 'angularx-qrcode';
+import { E404Component } from './e404/e404.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     SectionsComponent,
     SectionsCardsComponent,
     SectionAssistenceComponent,
+    E404Component,
   ],
   imports: [
     BrowserModule,

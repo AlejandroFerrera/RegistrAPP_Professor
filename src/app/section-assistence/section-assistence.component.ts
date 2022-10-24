@@ -23,7 +23,7 @@ import { Location } from '@angular/common';
 })
 export class SectionAssistenceComponent implements OnInit, OnDestroy {
   section?: Section;
-  section_id: string = "";
+  section_id: string = '';
   tuitionData: Student[] = [];
   presentStudentsId: Number[] = [];
 
