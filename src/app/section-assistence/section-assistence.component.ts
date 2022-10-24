@@ -14,6 +14,7 @@ import { SectionsService } from '../services/sections.service';
 import { StudentsService } from '../services/students.service';
 import { ActivatedRoute } from '@angular/router';
 import { Student } from '../interfaces/student';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-section-assistence',
@@ -22,7 +23,7 @@ import { Student } from '../interfaces/student';
 })
 export class SectionAssistenceComponent implements OnInit, OnDestroy {
   section?: Section;
-  section_id?: string;
+  section_id: string = "";
   tuitionData: Student[] = [];
   presentStudentsId: Number[] = [];
 
@@ -47,13 +48,15 @@ export class SectionAssistenceComponent implements OnInit, OnDestroy {
   constructor(
     private studentsService: StudentsService,
     private sectionService: SectionsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {
     this.section_id = String(this.route.snapshot.paramMap.get('section_id'));
   }
 
   ngOnInit(): void {
     this.getSection();
+    this.getStudents();
     setInterval(() => this.getStudents(), 2000);
   }
 
@@ -83,11 +86,11 @@ export class SectionAssistenceComponent implements OnInit, OnDestroy {
       this.studentsService
         .getSectionAssistance(this.section_id)
         .subscribe((students) => {
-
           students.forEach((student: any) => {
-
             let studentId = student.idAlumno;
-            let isInSection = this.presentStudentsId.find(id => id === studentId);
+            let isInSection = this.presentStudentsId.find(
+              (id) => id === studentId
+            );
 
             if (isInSection) {
               return;
@@ -105,5 +108,9 @@ export class SectionAssistenceComponent implements OnInit, OnDestroy {
           this.dataSource = new MatTableDataSource(this.tuitionData);
         });
     }
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

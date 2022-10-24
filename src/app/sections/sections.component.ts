@@ -30,8 +30,8 @@ export class SectionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.nombreProfesor = this.state.nombre;
-    this.apellidoProfesor = this.state.apellido;
+    this.nombreProfesor = 'Pedro';
+    this.apellidoProfesor = 'Picapiedra';
 
     timer(0, 1000).subscribe(() => {
       this.dateTime = new Date();

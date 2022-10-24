@@ -1,10 +1,15 @@
-.students-table, .section-table {
+.section-table {
   width: 75%;
   margin: 50px auto;
 }
 
+#students-assistance-table,
+.students-table {
+  width: 99%;
+}
+
 .section-table {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 th {
@@ -13,38 +18,62 @@ th {
 }
 
 td {
-    background: #f6faff;
+  background: #f6faff;
 }
 
-h1{
-    text-align: center;
-    margin-top: 15px;
-    font-size: 20px;
-    font-weight: bolder;
+h1 {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: bolder;
 }
 
-.save-btn, .exit-btn {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    margin: -10px 10px 20px;
+.save-btn,
+.exit-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin: -10px 10px 20px;
 }
 
-.mat-icon, p {
-    display: inline;
-    margin: 0 5px 0 0;
+.mat-icon,
+p {
+  display: inline;
+  margin: 0 5px 0 0;
 }
 
 .assistence-actions {
-    width: 25%;
-    margin: auto;
-    display: flex;
+  margin: auto;
+  display: flex;
+  margin-left: -10px;
 }
 
 .loading {
-    text-align: center;
-    font-size: 20px;
-    margin-top: 50px;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 50px;
+}
 
+/* The div container */
+.qrcodeImage {
+  display: flex;
+  flex: 1;
+}
+
+/* Add custom styles here */
+.center {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.qr-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.assistance-section {
+    width: 75%;
+    margin: auto;
 }

@@ -3,69 +3,114 @@
 
 
 <main>
-    <table class="section-table mat-elevation-z3" mat-table [dataSource]="sectionData">
-        <ng-container matColumnDef="Asignatura">
-            <th mat-header-cell *matHeaderCellDef> Asignatura </th>
-            <td mat-cell *matCellDef="let element"> {{element.asignatura}} </td>
-        </ng-container>
-        <ng-container matColumnDef="Seccion">
-            <th mat-header-cell *matHeaderCellDef> Seccion </th>
-            <td mat-cell *matCellDef="let element"> {{element.seccion}} </td>
-        </ng-container>
-        <ng-container matColumnDef="Horario">
-            <th mat-header-cell *matHeaderCellDef> Horario </th>
-            <td mat-cell *matCellDef="let element"> {{element.horario}} </td>
-        </ng-container>
-        <ng-container matColumnDef="Sala">
-            <th mat-header-cell *matHeaderCellDef> Sala </th>
-            <td mat-cell *matCellDef="let element"> {{element.sala}} </td>
-        </ng-container>
-        <ng-container matColumnDef="Estado">
-            <th mat-header-cell *matHeaderCellDef> Estado </th>
-            <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="sectionColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: sectionColumns;"></tr>
-    </table>
+    <section id="#section-info">
+        <table class="section-table mat-elevation-z3" mat-table [dataSource]="sectionData">
+            <ng-container matColumnDef="Asignatura">
+                <th mat-header-cell *matHeaderCellDef> Asignatura </th>
+                <td mat-cell *matCellDef="let element"> {{element.asignatura}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Seccion">
+                <th mat-header-cell *matHeaderCellDef> Seccion </th>
+                <td mat-cell *matCellDef="let element"> {{element.seccion}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Horario">
+                <th mat-header-cell *matHeaderCellDef> Horario </th>
+                <td mat-cell *matCellDef="let element"> {{element.horario}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Sala">
+                <th mat-header-cell *matHeaderCellDef> Sala </th>
+                <td mat-cell *matCellDef="let element"> {{element.sala}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Estado">
+                <th mat-header-cell *matHeaderCellDef> Estado </th>
+                <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="sectionColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: sectionColumns;"></tr>
+        </table>
+    </section>
+
+    <mat-grid-list cols="2" rowHeight="60vh" class="assistance-section">
+        <mat-grid-tile>
+            <section id="students-assistance-table">
+                <div class="assistence-actions">
+                    <button (click)="goBack()" class="exit-btn" mat-stroked-button color="basic">
+                        <mat-icon>keyboard_backspace</mat-icon>
+                        <p>Atras</p>
+                    </button>
+                    <button class="save-btn" mat-flat-button color="primary">
+                        <mat-icon>save</mat-icon>
+                        <p>Guardar asistencia</p>
+                    </button>
+
+                </div>
+                
+                <div *ngIf="!presentStudentsId.length; else content">
+                    <p>Esperando a que alumnos se registren...</p>
+                </div>
+
+                <ng-template #content>
+
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 students-table" matSort matSortDisableClear
+                        matSortActive="lastName" matSortDirection="asc">
+                
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="Nombre">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                            <td mat-cell *matCellDef="let element"> {{element.nombreAlumno}} </td>
+                        </ng-container>
+                
+                        <!-- LastName Column -->
+                        <ng-container matColumnDef="Apellido">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
+                            <td mat-cell *matCellDef="let element"> {{element.apellidoAlumno}} </td>
+                        </ng-container>
+                
+                        <!-- Mail Column -->
+                        <ng-container matColumnDef="Fecha">
+                            <th mat-header-cell *matHeaderCellDef> Asistencia </th>
+                            <td mat-cell *matCellDef="let element">
+                                {{element.fechaClase}}
+                            </td>
+                        </ng-container>
+                
+                
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        
+                    </table>
+                </ng-template>
+            
+
+            </section>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="qr-section">
+
+                <h1>Escanee QR para registrar asistencia:</h1>
+                <div class="qrcodeImage center">
+                    <qrcode
+                      [qrdata]="section_id"
+                      [allowEmptyString]="true"
+                      [ariaLabel]="'QR Code image with the following content...'"
+                      [cssClass]="'center'"
+                      [colorDark]="'#ffffff'"
+                      [colorLight]="'#022a9e'"
+                      [elementType]="'canvas'"
+                      [errorCorrectionLevel]="'M'"
+                      [imageSrc]="'./assets/angular-logo.png'"
+                      [imageHeight]="75"
+                      [imageWidth]="75"
+                      [margin]="4"
+                      [scale]="1"
+                      [title]="'Id Seccion'"
+                      [width]="200"
+                    ></qrcode>
+                  </div>
+            </div>
+        </mat-grid-tile>
+      </mat-grid-list>
 
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 students-table" matSort matSortDisableClear
-        matSortActive="lastName" matSortDirection="asc">
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="Nombre">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-            <td mat-cell *matCellDef="let element"> {{element.nombreAlumno}} </td>
-        </ng-container>
-
-        <!-- LastName Column -->
-        <ng-container matColumnDef="Apellido">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
-            <td mat-cell *matCellDef="let element"> {{element.apellidoAlumno}} </td>
-        </ng-container>
-
-        <!-- Mail Column -->
-        <ng-container matColumnDef="Fecha">
-            <th mat-header-cell *matHeaderCellDef> Asistencia </th>
-            <td mat-cell *matCellDef="let element">
-                {{element.fechaClase}}
-            </td>
-        </ng-container>
-
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
-    <div class="assistence-actions">
-        <button class="save-btn" mat-flat-button color="primary">
-            <mat-icon>save</mat-icon>
-            <p>Guardar asistencia</p>
-        </button>
-        <button class="exit-btn" mat-flat-button color="warn">
-            <mat-icon>close</mat-icon>
-            <p>Salir</p>
-        </button>
-    </div>
 
 </main>

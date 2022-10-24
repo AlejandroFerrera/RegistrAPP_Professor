@@ -18,7 +18,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import {MatRadioModule} from '@angular/material/radio';
     HttpClientModule,
     MatTableModule,
     MatSortModule,
-    MatRadioModule
+    MatRadioModule,
+    MatGridListModule,
+    QRCodeModule,
   ],
   providers: [AuthGuardService, AuthService],
   bootstrap: [AppComponent],
