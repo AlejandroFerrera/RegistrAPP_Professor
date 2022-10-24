@@ -1,5 +1,5 @@
 export interface Student {
-  nombre: string;
-  apellido: string;
-  estaPresente: boolean;
+  nombreAlumno: string;
+  apellidoAlumno: string;
+  fechaClase: boolean;
 }

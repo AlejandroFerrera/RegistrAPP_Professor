@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subscription } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { Section } from '../interfaces/sections';
 import { SectionsService } from '../services/sections.service';
 import { StudentsService } from '../services/students.service';
@@ -24,6 +24,7 @@ export class SectionAssistenceComponent implements OnInit, OnDestroy {
   section?: Section;
   section_id?: string;
   tuitionData: Student[] = [];
+  presentStudentsId: Number[] = [];
 
   sectionData = new MatTableDataSource();
 
@@ -36,7 +37,7 @@ export class SectionAssistenceComponent implements OnInit, OnDestroy {
   ];
 
   dataSource: any;
-  displayedColumns: string[] = ['Nombre', 'Apellido', 'Asistencia'];
+  displayedColumns: string[] = ['Nombre', 'Apellido', 'Fecha'];
 
   @ViewChild(MatSort) sort: MatSort | undefined;
 
@@ -47,11 +48,13 @@ export class SectionAssistenceComponent implements OnInit, OnDestroy {
     private studentsService: StudentsService,
     private sectionService: SectionsService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.section_id = String(this.route.snapshot.paramMap.get('section_id'));
+  }
 
   ngOnInit(): void {
     this.getSection();
-    this.getStudents();
+    setInterval(() => this.getStudents(), 2000);
   }
 
   ngOnDestroy() {
@@ -76,23 +79,31 @@ export class SectionAssistenceComponent implements OnInit, OnDestroy {
   }
 
   getStudents() {
-    const sectionId = String(this.route.snapshot.paramMap.get('section_id'));
-    this.studentsService.getSectionTuition(sectionId).subscribe((tuition) => {
+    if (this.section_id) {
+      this.studentsService
+        .getSectionAssistance(this.section_id)
+        .subscribe((students) => {
 
-      console.log(tuition)
+          students.forEach((student: any) => {
 
-      tuition.forEach((student: any) => {
-        const newStudent: Student = {
-          nombre: student.nombreAlumno,
-          apellido: student.apellidoAlumno,
-          estaPresente: false,
-        };
-        this.tuitionData.push(newStudent);
-      });
+            let studentId = student.idAlumno;
+            let isInSection = this.presentStudentsId.find(id => id === studentId);
 
-      console.log(this.tuitionData)
+            if (isInSection) {
+              return;
+            }
 
-      this.dataSource = new MatTableDataSource(this.tuitionData);
-    });
+            const newStudent: Student = {
+              nombreAlumno: student.nombreAlumno,
+              apellidoAlumno: student.apellidoAlumno,
+              fechaClase: student.fechaClase,
+            };
+            this.tuitionData.push(newStudent);
+            this.presentStudentsId.push(studentId);
+          });
+
+          this.dataSource = new MatTableDataSource(this.tuitionData);
+        });
+    }
   }
 }
